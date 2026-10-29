@@ -1,6 +1,6 @@
 # Sidebar Tab Sorter
 
-Blender add-on to reorder the tabs in the N-panel sidebar (Tool, View, Animation, Edit, …).
+Blender add-on to reorder and hide the tabs in the N-panel sidebar (Tool, View, Animation, Edit, …).
 
 Blender orders tabs by registration order, so you normally can't change it. This add-on re-registers sidebar panels sorted by your chosen tab order.
 
@@ -11,10 +11,10 @@ Blender orders tabs by registration order, so you normally can't change it. This
 
 ## Use
 
-Press **N** in the 3D viewport → **Tab Sorter** tab. Pick the editor, select a tab in the list, use the up/down arrows. The sidebar updates live. The same UI is in the add-on's preferences.
+Press **N** in the 3D viewport → **Tab Sorter** tab. Pick the editor, then use the up/down arrows on a tab to move it and the eye icon to hide/show it. The sidebar updates live. The same UI is in the add-on's preferences.
 
-- **Refresh** — re-read tabs and re-apply the order (after enabling other add-ons).
-- **Reset** — back to default order.
+- **Re-apply** — re-apply the saved order/hidden state (after enabling other add-ons).
+- **Reset** — default order, all tabs shown.
 - Order is saved in add-on preferences and re-applied on startup (needs preference auto-save on, the default).
 - Supports 3D Viewport, Image, Node, Sequencer and Clip editors.
 
