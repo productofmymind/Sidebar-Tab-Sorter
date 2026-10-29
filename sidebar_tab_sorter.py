@@ -97,16 +97,24 @@ def apply_order(space, order):
 
     done = []
     for p in panels:
+        if getattr(p, "bl_parent_id", "") and p.bl_parent_id not in by_id:
+            continue  # parent lives in another region; re-registering would fail
         try:
             bpy.utils.unregister_class(p)
             done.append(p)
         except RuntimeError:
             pass  # not registered (e.g. abstract mixin)
-    for p in sorted(done, key=key):
+    pending = sorted(done, key=key)
+    while pending:
+        # a sub-panel needs its parent registered first
+        ready = next((p for p in pending
+                      if not getattr(p, "bl_parent_id", "")
+                      or p.bl_parent_id not in {_idname(q) for q in pending}), pending[0])
+        pending.remove(ready)
         try:
-            bpy.utils.register_class(p)
+            bpy.utils.register_class(ready)
         except Exception as e:
-            print(f"Sidebar Tab Sorter: could not re-register {p}: {e}")
+            print(f"Sidebar Tab Sorter: could not re-register {ready}: {e}")
     for w in bpy.context.window_manager.windows:
         for a in w.screen.areas:
             a.tag_redraw()
