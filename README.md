@@ -21,5 +21,5 @@ Press **N** in the 3D viewport → **Tab Sorter** tab. Pick the editor, then use
 ## Limitations
 
 - Tabs made only of C-coded panels (e.g. the 3D viewport *Item* tab) can't be listed or moved.
-- Add-ons enabled later register their tabs at the end; hit Refresh.
+- Add-ons enabled later register their tabs at the end; hit Re-apply.
 
